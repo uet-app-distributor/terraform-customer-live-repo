@@ -10,3 +10,14 @@ variable "vpc_tags" {
   description = "Tags for customer VPC"
 }
 
+variable "subnet_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Tags for customer subnet"
+}
+
+variable "default_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Default tags"
+}
