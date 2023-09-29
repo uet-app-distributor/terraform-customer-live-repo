@@ -6,7 +6,9 @@ variable "cidr_block" {
 
 variable "vpc_tags" {
   type        = map(string)
-  default     = {}
+  default     = {
+    Name = "customer-app-vpc"
+  }
   description = "Tags for customer VPC"
 }
 
@@ -16,7 +18,7 @@ variable "subnet_tags" {
   description = "Tags for customer subnet"
 }
 
-variable enable_ig {
+variable "enable_ig" {
   type        = bool
   default     = true
   description = "Enable/disable Internet Gateway"

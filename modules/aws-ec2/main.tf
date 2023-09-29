@@ -12,7 +12,7 @@ data "aws_ami" "ubuntu" {
   }
 
   # Canonical
-  owners = ["099720109477"] 
+  owners = ["099720109477"]
 }
 
 resource "aws_network_interface" "customer_app_instance" {
@@ -24,18 +24,23 @@ resource "aws_network_interface" "customer_app_instance" {
   tags = var.default_tags
 }
 
+resource "aws_eip" "customer_app_instance" {
+  count = var.enabled_public_ip ? 1 : 0
+  instance = aws_instance.customer_app.id
+}
+
 resource "aws_instance" "customer_app" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
+  ami                         = data.aws_ami.ubuntu.id
+  instance_type               = "t3.micro"
 
   dynamic "network_interface" {
     for_each = aws_network_interface.customer_app_instance[0].id != 0 ? [1] : []
 
     content {
       network_interface_id = aws_network_interface.customer_app_instance[0].id
-       device_index         = 0
+      device_index         = 0
     }
   }
 
-  tags =var.default_tags
+  tags = var.default_tags
 }
