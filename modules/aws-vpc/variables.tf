@@ -21,3 +21,10 @@ variable "default_tags" {
   default     = {}
   description = "Default tags"
 }
+
+variable enable_ig {
+  type        = bool
+  default     = true
+  description = "Enable/disable Internet Gateway"
+}
+
