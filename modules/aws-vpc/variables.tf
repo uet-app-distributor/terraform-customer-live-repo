@@ -16,12 +16,6 @@ variable "subnet_tags" {
   description = "Tags for customer subnet"
 }
 
-variable "default_tags" {
-  type        = map(string)
-  default     = {}
-  description = "Default tags"
-}
-
 variable enable_ig {
   type        = bool
   default     = true
