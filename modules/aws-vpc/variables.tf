@@ -5,8 +5,8 @@ variable "cidr_block" {
 }
 
 variable "vpc_tags" {
-  type        = map(string)
-  default     = {
+  type = map(string)
+  default = {
     Name = "customer-app-vpc"
   }
   description = "Tags for customer VPC"
