@@ -10,7 +10,6 @@ variable "vpc_id" {
   description = "VPC ID"
 }
 
-
 variable "enabled_public_ip" {
   type        = bool
   default     = true
@@ -21,4 +20,10 @@ variable "ssh_public_key" {
   type        = string
   default     = ""
   description = "SSH public key"
+}
+
+variable "instance_ami" {
+  type        = string
+  default     = ""
+  description = "AMI ID for customer app instance"
 }

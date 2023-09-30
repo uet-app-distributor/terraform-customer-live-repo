@@ -85,7 +85,7 @@ resource "aws_eip" "customer_app_instance" {
 }
 
 resource "aws_instance" "customer_app" {
-  ami           = data.aws_ami.ubuntu.id
+  ami           = var.instance_ami != "" ? var.instance_ami : data.aws_ami.ubuntu.id
   instance_type = local.default_instance_type
 
   key_name = length(aws_key_pair.orchestrator) == 1 ? aws_key_pair.orchestrator[0].id : null
