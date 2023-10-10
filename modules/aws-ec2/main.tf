@@ -25,7 +25,7 @@ data "aws_ami" "ubuntu" {
 
 locals {
   default_instance_type = "t3.micro"
-  orchestrator_ssh_key  = "orchestrator"
+  orchestrator_ssh_key  = "orchestrator-${uuid()}"
 }
 
 
